@@ -17,7 +17,8 @@ self.addEventListener('push', function(e) {
     e.waitUntil(
         self.registration.showNotification('New vehicles on your watchlist', options)
     );
-    }
+    console.log("force change");
+  }
 );
 
 // git remote add origin git_url_here
