@@ -15,7 +15,7 @@ self.addEventListener('push', function(e) {
         ]
     };
     e.waitUntil(
-        self.ServiceWorkerRegistration.showNotification('New vehicles on your watchlist', options)
+        self.registration.showNotification('New vehicles on your watchlist', options)
     );
     }
 );
