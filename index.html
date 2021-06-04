@@ -8,9 +8,10 @@
         <script>
             addEventListener('load', async () => {
 
-                let sw = await navigator.serviceWorker.register('./se.js');
+                let sw = await navigator.serviceWorker.register('./sw.js');
                 console.log(sw);
             });
+
             async function subscribe() {
 
                 let sw = await navigator.serviceWorker.ready;
@@ -19,7 +20,7 @@
                     applicationServerKey: 'BJTgpvQBs3U6OdSiX_RL-MUeSt81ljORwXHQdYigSLBUcdMUfeSA7CObwtfrZkWyUdJ25YiO8KuABhkjzHcE6D0'
                 })
                 console.log(JSON.stringify(push));
-            });
+            }
         </script>
     </body>
 </html>
