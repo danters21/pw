@@ -6,11 +6,29 @@
         <button onclick="subscribe()">Subscribe</button>
 
         <script>
-            addEventListener('load', async () => {
-
+            function registerAndSubscribeNotification() {
                 let sw = await navigator.serviceWorker.register('./sw.js');
                 console.log(sw);
+                subscribe();
+            }
+            addEventListener('load', async () => {
+                if (window.Notification && Notification.permission === "granted") {
+                    registerAndSubscribeNotification();
+                }
+
+                // If the user hasn't told if they want to be notified or not
+                // Note: because of Chrome, we are not sure the permission property
+                // is set, therefore it's unsafe to check for the "default" value.
+                else if (window.Notification && Notification.permission !== "denied") {
+                    Notification.requestPermission(function (status) {
+                        // If the user said okay
+                        if (status === "granted") {
+                            registerAndSubscribeNotification();
+                        }
+                    });
+                }
             });
+
 
             async function subscribe() {
 
@@ -20,7 +38,6 @@
                     applicationServerKey: 'BJTgpvQBs3U6OdSiX_RL-MUeSt81ljORwXHQdYigSLBUcdMUfeSA7CObwtfrZkWyUdJ25YiO8KuABhkjzHcE6D0'
                 })
                 console.log(JSON.stringify(push));
-                console.log("force change");
             }
         </script>
 
