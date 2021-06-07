@@ -2,7 +2,7 @@ self.addEventListener('push', function(e) {
     var payload = JSON.parse(e.data.text());
     var options = {
         body: payload.message,
-        icon: 'images/logo_car_only.png',
+        icon: 'images/logo.png',
         vibrate: [100, 50, 100],
         data: {
             dateOfArrival: Date.now(),
