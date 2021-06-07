@@ -6,7 +6,7 @@
         <button onclick="subscribe()">Subscribe</button>
 
         <script>
-            function registerAndSubscribeNotification() {
+            async function registerAndSubscribeNotification() {
                 let sw = await navigator.serviceWorker.register('./sw.js');
                 console.log(sw);
                 subscribe();
