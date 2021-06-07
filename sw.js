@@ -10,8 +10,7 @@ self.addEventListener('push', function(e) {
             url: payload.url
         },
         actions: [
-            { action: 'explore', title: 'Show',
-                icon: 'images/check.png'}
+            { action: 'explore', title: 'Show'}
         ]
     };
     e.waitUntil(        
