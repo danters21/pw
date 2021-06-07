@@ -1,8 +1,8 @@
 self.addEventListener('push', function(e) {
     var payload = JSON.parse(e.data.text());
     var options = {
-        body: 'Data from push: ' + payload.message,
-        icon: 'images/example.png',
+        body: payload.message,
+        icon: 'images/logo_car_only.png',
         vibrate: [100, 50, 100],
         data: {
             dateOfArrival: Date.now(),
@@ -10,14 +10,12 @@ self.addEventListener('push', function(e) {
             url: payload.url
         },
         actions: [
-            { action: 'explore', title: 'Explore this new world',
-                icon: 'images/checkmark.png'},
-                { action: 'close', title: 'Close',
-                icon: 'images/xmark.png'},
+            { action: 'explore', title: 'Show',
+                icon: 'images/check.png'}
         ]
     };
     e.waitUntil(        
-        self.registration.showNotification('Updated new vehicles', options)
+        self.registration.showNotification(payload.subject, options)
     );
     console.log("force change");
   }
