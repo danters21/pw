@@ -1,6 +1,11 @@
 self.addEventListener('push', function(e) {
-    console.log("data received", e.data.text());
-    var payload = JSON.parse(e.data.text());
+    var rawData = e.data.text();
+    //insert missing quotes coming from python
+    rawData = rawData.replace('subject:', '"subject":');
+    rawData = rawData.replace('message:', '"message":');
+    rawData = rawData.replace('url:', '"url":');
+
+    var payload = JSON.parse(rawData);
     var options = {
         body: payload.message,
         icon: 'images/logo-tp.png',
