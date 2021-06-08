@@ -1,11 +1,14 @@
 self.addEventListener('push', function(e) {
     var rawData = e.data.text();
+    /*
     rawData = rawData.trim();
-    //insert missing quotes coming from python
     rawData = rawData.replace('subject:', '"subject":');
     rawData = rawData.replace('message:', '"message":');
     rawData = rawData.replace('url:', '"url":');
-
+    rawData = rawData.replace(": '", ': "');
+    rawData = rawData.replace(": '", ': "');
+    */
+   
     console.log("received data", rawData);
     var payload = JSON.parse(rawData);
     var options = {
