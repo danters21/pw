@@ -1,4 +1,5 @@
 self.addEventListener('push', function(e) {
+    console.log("data received", e.data.text());
     var payload = JSON.parse(e.data.text());
     var options = {
         body: payload.message,
